@@ -1,0 +1,13 @@
+<h1>Result</h1>
+
+<% if @result[:message] == "well done" %>
+  <p><strong>Congratulations! </strong><%= @result[:answer].upcase %> is a valid English word!</p>
+  <p>Completed in <%= @result[:time].round(2) %> seconds</p>
+  <p>Score is <%= @result[:score].round(2) %></p>
+<% elsif @result[:message] == "not an english word" %>
+  <p>Sorry, but <strong><%= @result[:answer].upcase %></strong> does not seem to be a valid english word...</p>
+<% elsif @result[:message] == "not in the grid" %>
+  <p>Sorry, but <strong><%= @result[:answer].upcase %></strong> cannot be built out of <%= @result[:letters]%></p>
+<% end %>
+
+<%= link_to "Play again", "/new", class:"mt-4"%>
